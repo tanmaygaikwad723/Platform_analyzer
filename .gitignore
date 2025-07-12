@@ -1,2 +1,6 @@
 *.env
 *.ini
+*.pkl
+*.egg*
+__pycache__
+saved_model
