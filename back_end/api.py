@@ -2,13 +2,11 @@ from transformers import BertTokenizer, TFBertForSequenceClassification, BertCon
 from preprocess import preprocess_text
 from wordcloud import WordCloud
 import matplotlib.pyplot as plt
-from dotenv import load_dotenv
 import tensorflow as tf
+import streamlit as st
 import pandas as pd
 import numpy as np
-import nltk
 import praw
-import os
 
 
 config_file = BertConfig.from_json_file("/content/config.json")
@@ -16,9 +14,15 @@ model = TFBertForSequenceClassification.from_pretrained("/content/tf_model.h5", 
 tokenizer = BertTokenizer.from_pretrained("bert-base-uncased")
 
 
+client_id = st.secrets["client_id"]
+client_secret = st.secrets["client_secret"]
+refresh_token = st.secrets["refresh_token"]
+user_agent = st.secrets["user_agent"]
+password=st.secrets["password"]
+username = st.secrets["username"]
 
-load_dotenv()
-reddit = praw.Reddit("bot1")
+reddit = praw.Reddit(client_id=client_id, client_secret=client_secret, user_agent=user_agent, password=password, username=username)
+
 
 
 def fetch_reddit_comments(url:str, reddit_instance: praw.Reddit = reddit) -> list:
