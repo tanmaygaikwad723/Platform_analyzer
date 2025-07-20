@@ -6,8 +6,15 @@ import tensorflow as tf
 import streamlit as st
 import pandas as pd
 import numpy as np
+import gdown
 import praw
+import os
 
+
+url = "https://drive.google.com/drive/folders/1j8X_U4JL5ZfoC8LxHA56Pwxr7ebxKYyo?usp=drive_link"
+gdown.download_folder(url, quiet=True)
+
+assert os.path.exists("/content/Platform_analyzer/tf_model.h5"), "model no found"
 
 config_file = BertConfig.from_json_file("/content/config.json")
 model = TFBertForSequenceClassification.from_pretrained("/content/tf_model.h5", config=config_file)
