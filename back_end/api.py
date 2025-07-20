@@ -1,7 +1,6 @@
 from transformers import BertTokenizer, TFBertForSequenceClassification, BertConfig
 from preprocess import preprocess_text
 from wordcloud import WordCloud
-import matplotlib.pyplot as plt
 import tensorflow as tf
 import streamlit as st
 import pandas as pd
