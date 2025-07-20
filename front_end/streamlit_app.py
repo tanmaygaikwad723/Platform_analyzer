@@ -1,6 +1,5 @@
 import streamlit as st
 st.set_page_config(layout="wide")
-import matplotlib.pyplot as plt
 from PIL import Image
 from api import generate_output
 
